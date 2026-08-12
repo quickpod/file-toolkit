@@ -1,13 +1,14 @@
 {
   "slug": "file-toolkit",
   "name": "File Toolkit",
-  "tagline": "Bulk rename, dedupe, hash/verify, archive, split/join and secure-delete \u2014 offline batch file utilities.",
+  "tagline": "Bulk rename, dedupe, hash/verify, archive, split/join and secure-delete — offline batch file utilities.",
   "categorySlug": "file-managers",
   "license": "Apache-2.0",
   "description": "Bulk rename with patterns and regex (with preview), find and remove duplicate files by content hash, compute and verify checksums for whole folders (SHA256SUMS), create and extract ZIP and 7z archives, split large files into parts and rejoin them, and securely wipe files. Batch-first with safe previews; nothing leaves your machine.",
   "aiStack": "Python (tkinter + CLI), py7zr, send2trash",
   "platforms": [
-    "windows"
+    "windows",
+    "linux"
   ],
   "buildEntry": "file_toolkit_app.py"
 }
