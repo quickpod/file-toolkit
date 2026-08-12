@@ -20,8 +20,10 @@ jobs:
           pyinstaller --onefile --windowed --name FileToolkit
           --icon file-toolkit.ico
           --version-file packaging/version.txt
+          --hidden-import filekit.__main__
           --add-data "file-toolkit.ico;."
           --collect-all py7zr
+          --collect-all customtkinter
           file_toolkit_app.py
       - name: Stage installer inputs
         shell: pwsh
@@ -41,4 +43,10 @@ jobs:
           path: |
             dist/FileToolkit.exe
             packaging/dist/FileToolkit-Setup.exe
+          if-no-files-found: error
+      - name: Upload staging (for signed repack)
+        uses: actions/upload-artifact@v4
+        with:
+          name: file-toolkit-staging
+          path: packaging/staging
           if-no-files-found: error

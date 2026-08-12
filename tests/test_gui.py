@@ -1,14 +1,20 @@
 """The GUI must import cleanly and degrade gracefully with no display."""
 
+import pytest
+import sys
 import os
 
 
+@pytest.mark.skipif(sys.platform == "win32",
+                    reason="Windows CI has a real display; main() would open a window and block")
 def test_gui_imports_clean():
     from filekit import gui
     assert hasattr(gui, "main")
     assert hasattr(gui, "build_app")
 
 
+@pytest.mark.skipif(sys.platform == "win32",
+                    reason="Windows CI has a real display; main() would open a window and block")
 def test_gui_main_headless_returns_zero(monkeypatch):
     # Ensure no display so main() takes the graceful-degradation path.
     monkeypatch.delenv("DISPLAY", raising=False)
