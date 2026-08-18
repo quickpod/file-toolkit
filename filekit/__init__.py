@@ -28,7 +28,7 @@ from .batch import (
     convert_archive, batch_convert_archives,
 )
 
-__version__ = "1.0.0"
+__version__ = "1.0.5"
 
 __all__ = [
     "FileKitError",
